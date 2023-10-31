@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>SOYE PORTFOLIO</title>
+</head>
+<body>
+    <section id="portfolioWrap">
+        <div id="main1">
+            <div class="backgroundImg">
+                <img src="./img/background1.png" alt="back">
+            </div>
+          <div class="logo">
+              <img src="./img/name1.png" alt="logo" class="logoImg logo1">
+              <img src="./img/name2.png" alt="logo" class="logoImg logo2">
+          </div>
+          <div class="skills">
+              <ul>
+                  <li><p><strong>Name :</strong>Soye Park</p></li>
+                  <li><p><strong>Birth :</strong>1994.12.07</p></li>
+                  <li><p><strong>Skills :</strong><span>Html5, Css3, Javascript, React</span></p></li>
+              </ul>
+          </div>
+        </div>
+      <div id="mines">
+        <section id="weatherApi">
+            <p class="api_title titleName">Today's Weather</p>
+            <div class="tdweater">
+                <div class="weatherIcon"></div>
+                <div class="weatherInfo">
+                 <p id="tdDays"></p>
+                 <p>지금 서울은 <span id="tdSky"></span></p>
+                 <p>온도는 <span id="tdTemp"></span></p>
+                 <p>비소식은 <span id="tdRain"></span></p>
+                 <p>바람은 <span id="tdWindy"></span></p>
+                </div>
+            </div>
+        </section>
+        <section id="drawBox">
+            <p class="website_title titleName">Canvas Drawing<em class="porofolio_info">html5, css3, javascript, canvas</em></p>
+            <div id="drawingWrap">
+                <span class="drawTop"><em></em><em></em><em></em></span>
+                <canvas id="canvas"></canvas>
+                <div class="canvasList">
+                    <ul class="colorBtn">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <ul class="drawBtn">
+                        <button class="reset">Reset</button>
+                        <button class="save"></button>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section id="wordle_container">
+            <p class="website_title titleName">Wordle Game<em class="porofolio_info">html5, css3, javascript</em></p>
+            <div id="wordlePackage">
+            <div class="wordInfo"><p></p></div>
+            <div id="pieceWrap">
+            <div class="pieceBox piece-container1">
+                <input class="piece1" maxlength="1">
+                <input class="piece1" maxlength="1">
+                <input class="piece1" maxlength="1">
+                <input class="piece1" maxlength="1">
+                <input class="piece1" maxlength="1">
+            </div>
+            <div class="pieceBox piece-container2">
+                <input class="piece2" maxlength="1">
+                <input class="piece2" maxlength="1">
+                <input class="piece2" maxlength="1">
+                <input class="piece2" maxlength="1">
+                <input class="piece2" maxlength="1">
+            </div>
+            <div class="pieceBox piece-container3">
+                <input class="piece3" maxlength="1">
+                <input class="piece3" maxlength="1">
+                <input class="piece3" maxlength="1">
+                <input class="piece3" maxlength="1">
+                <input class="piece3" maxlength="1">
+            </div>
+            <div class="pieceBox piece-container4">
+                <input class="piece4" maxlength="1">
+                <input class="piece4" maxlength="1">
+                <input class="piece4" maxlength="1">
+                <input class="piece4" maxlength="1">
+                <input class="piece4" maxlength="1">
+            </div>
+            <div class="pieceBox piece-container5">
+                <input class="piece5" maxlength="1">
+                <input class="piece5" maxlength="1">
+                <input class="piece5" maxlength="1">
+                <input class="piece5" maxlength="1">
+                <input class="piece5" maxlength="1">
+            </div>
+            </div>
+            <div id="btn_contaniner">
+            <button id="startBtn">Start</button>
+            <button id="answer">Submit</button>
+            </div>
+            <div id="gameover">
+                <p class="over">game over</p>
+                <span class="tryCont">Try 
+                    <em class="count1"></em>
+                    <em class="count2"></em>
+                    <em class="count3"></em>
+                    <em class="count4"></em>
+                    <em class="count5"></em>
+                </span>
+                <span class="scroeCont">Score <em></em></span>
+                <button class="retry">Restart</button>
+            </div>
+        </div>
+         </section>
+            <section id="sliderWrap" style="width:100%; height:100%; margin:0 auto; padding:100px 0px;">
+                <p class="website_title titleName">WebSite</p>
+                <div class="sliderBtn">
+                  <button id="webBtn">Web</button>
+                  <button id="reactBtn">React</button>
+                 </div>
+                      <div class="sliderContainer">
+                          <ul class="sliderCont">
+                              <li><a href="https://soyeya.github.io/binggrae_web/" target="_blank"><img src="./img/web_img1.png" alt="web1"><em class="siteInfo">Html5, css3, javascript</em></a></li>
+                              <li><a href="https://soyeya.github.io/Disney-website/" target="_blank"><img src="./img/web_img3.png" alt="web2"><em class="siteInfo">Html5, css3, javascript</em></a></li>
+                              <li><a href="https://soyeya.github.io/popupStore_Web/" target="_blank"><img src="./img/web_img2.png" alt="web3"><em class="siteInfo">Html5, css3, javascript</em></a></li>
+                              <li class="reactCont"><a href="https://soyeya.github.io/React_lush_/" target="_blank"><img src="./img/rea_img1.png" alt="react1"><em class="siteInfo">React</em></a></li>
+                              <li><a href="https://soyeya.github.io/React_tada/" target="_blank"><img src="./img/rea_img2.png" alt="react2"><em class="siteInfo">React</em></a></li>
+                              <li><a href="https://soyeya.github.io/React_koreanair/" target="_blank"><img src="./img/rea_img3.png" alt="react3"><em class="siteInfo">React</em></a></li>
+                          </ul>
+                      </div>
+              </section>
+      </div>
+        </section>
+        <script src="./js/script.js"></script>
+</body>
+</html>
