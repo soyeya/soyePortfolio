@@ -85,7 +85,7 @@ const tdDays = document.getElementById("tdDays");
 let today = new Date();
 console.log(today);
 
-const dates = today.getDate();
+let dates = today.getDate();
 const days  = today.getDay();
 const months  = today.getMonth() + 1;
 const years  = today.getFullYear();
@@ -95,7 +95,12 @@ console.log(today_watch);
 const timeContent =  Number(today_watch);
 console.log(timeContent);
 
+if(dates < 10){
 
+   dates = ["0" + today.getDate()];
+   console.log(dates);
+
+};
 const Days_array = [ "Sunday",  "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday", "Saturday"];
 const Month_array = [ "January" , "February" , "March" , "April" , "May" , "Jun" , "July" , "August" , "September" , "Octobor" , "November" , "December"]
 
