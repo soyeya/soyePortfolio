@@ -661,6 +661,13 @@ body{
     color:#b247ea;
     
 }
+
+#sliderWrap button.active{
+
+    color:#b247ea;
+
+}
+
 #sliderWrap .sliderContainer{
 
     width:100%;
@@ -673,12 +680,13 @@ body{
 
 #sliderWrap .sliderContainer ul{
 
-      width:230%;
+      width:240%;
       height:100%;
       display: flex;
       align-items: center;
       justify-content: center;
       margin:0 auto;
+      margin-left:100px;
 
 }
 
@@ -689,7 +697,7 @@ body{
 
 #sliderWrap .sliderContainer ul li{
 
-    width:380px;
+    width:calc(30%);
     height:100%;
     margin:20px;
     border-radius: 10px;

@@ -1000,10 +1000,39 @@ restartBtn.addEventListener("click", function(){
 let sliderContent = document.querySelector(".sliderCont");
 let slideList = document.querySelectorAll(".sliderCont li");
 
+const webBtn = document.getElementById("webBtn");
+const reactBtn = document.getElementById("reactBtn");
+const vueBtn = document.getElementById("vueBtn");
+
 const slideWidth = 380;
 const slideMargin = 20;
 const slideLength = slideList.length;
-let slideCurrent = 1;
+let slideCurrent = 0;
+webBtn.classList.add("active");
+
+const changeBtnColor = () => {
+
+  if( slideCurrent >= 0){
+
+     webBtn.classList.add("active");
+     reactBtn.classList.remove("active");
+     vueBtn.classList.remove("active");
+
+  }if(slideCurrent >= 3){
+
+     reactBtn.classList.add("active");
+     webBtn.classList.remove("active");
+
+  }if(slideCurrent >= 6){
+
+    vueBtn.classList.add("active");
+    webBtn.classList.remove("active");
+    reactBtn.classList.remove("active");
+
+ }
+
+   
+}
 
 
 const movingSlider = () => {
@@ -1014,13 +1043,14 @@ const movingSlider = () => {
  sliderContent.style.transform = `translateX(${movingScreen}px)`;
  sliderContent.classList.add("move");
  slideCurrent++;
- 
+ console.log(slideCurrent);
+
     if(slideCurrent == slideLength){
 
         sliderContent.style.transform = `translateX(0px)`;
-        slideCurrent = 1;
+        slideCurrent = 0;
 
-    };
+    }
 
     setTimeout(() => {
 
@@ -1028,6 +1058,9 @@ const movingSlider = () => {
         console.log('transform삭제');
 
     },800);
+
+    changeBtnColor();
+
     
 };
 
@@ -1049,13 +1082,13 @@ const sliderController = () => {
 
 sliderController();
 
-const webBtn = document.getElementById("webBtn");
-const reactBtn = document.getElementById("reactBtn");
-
 webBtn.addEventListener("click" , function(){
 
     slideCurrent = 0;
     movingSlider();
+    this.classList.add("active");
+    reactBtn.classList.remove("active");
+    vueBtn.classList.remove("active");
 
 });
 
@@ -1063,6 +1096,20 @@ reactBtn.addEventListener("click" , function(){
 
     slideCurrent = 3;
     movingSlider();
+    this.classList.add("active");
+    webBtn.classList.remove("active");
+    vueBtn.classList.remove("active");
+
+});
+
+vueBtn.addEventListener("click" , function(){
+
+    slideCurrent = 6;
+    movingSlider();
+    this.classList.add("active");
+    webBtn.classList.remove("active");
+    reactBtn.classList.remove("active");
+
 });
 
 
