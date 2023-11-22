@@ -31,10 +31,6 @@ body{
     max-width:100%;
     height: 1000px;
     margin:0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
     position: relative;
 
 
@@ -49,109 +45,193 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: 800ms;
+    overflow: hidden;
     
 }
 
 #main1 .backgroundImg img{
 
     width:auto;
-    height:100%;
+    height:110%;
+    opacity:25%;
+    animation: backOpacity infinite 1s ease-in-out;
 
 }
 
-#main1 .logo{
- 
-   margin:0 auto;
-}
+@keyframes backOpacity{
 
-#main1 .logoImg{
-
-    display: block;
-    height: 100px;
-    animation: logo 1s infinite ease-in-out;
-    position: relative;
-    opacity:70%;
-
-}
-#main1 .logoImg:nth-child(2){
-
-   height: 70px;
-   position: relative;
+    50%{opacity: 30%};
+    100%{opacity: 50%};
 
 }
 
-@keyframes logo{
+@-webkit-keyframes backOpacity{
 
-    0%{transform: translateY(0px);}
-    50%{transform: translateY(5px); }
-    100%{transform: translateY(0px); }
+    50%{opacity: 30%};
+    100%{opacity: 50%};
+
 }
 
-#main1 .skills{
+#main1 .introInfo{
 
     display: flex;
     align-items: center;
     justify-content: center;
-    margin:60px 0px;
+    margin:0 auto;
+    width: 100%;
+    height: 100%;
 
 }
 
-#main1 .skills ul{
+#main1 .introInfo ul{
 
     padding: 10px 0px;
 
 }
 
-#main1 .skills ul li{
+#main1 .introInfo ul li{
 
     padding: 10px 0px;
-
-}
-
-#main1 .skills ul li:last-child{
-
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 
 }
 
+#main1 .introInfo ul li p{
 
-#main1 .skills ul li p{
-
-    font-size: 20px;
+    font-size: 50px;
+    width: 500px;
+    padding: 20px 0px;
     color:#fff;
-    letter-spacing: 10px;
+    font-weight: 900;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    display: flex;
-    align-items: center;
+    text-align: left;
 }
 
-#main1 .skills ul li:last-child span{
+#main1 .introInfo ul li p em{
 
-    font-size: 15px;
-    font-weight: 600;
+    font-style: normal;
+    float:left;  
+    display: none;
+    
+
+}
+
+#main1 .introInfo ul li p:last-child em{
+
+    font-weight: 300;
+    font-size: 20px;
     letter-spacing: 5px;
 }
 
-#main1 .skills ul li p strong{
+#main1 .introInfo ul li p em.active{
 
-    color:#b247ea;
+    display: inline-block;
+
 }
 
+#skillsInfo{
+
+    width: 100%;
+    padding: 150px 0px;
+    margin:0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#skillsInfo ul{
+
+    margin:0 auto;
+
+}
+
+#skillsInfo ul li{
+
+}
+
+#skillsInfo ul li p{
+
+    color:#fff;
+    font-size: 50px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+#skillsInfo ul:nth-child(2) {
+
+     margin-left:-200px;
+}
+
+#skillsInfo ul:nth-child(2) li{
+
+    padding: 20px;
+    text-align: center;
+
+}
+
+#skillsInfo ul:nth-child(2) li a{
+
+    color:#b247ea;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    opacity: 30%;
+    padding: 10px;
+    display:inline-block;
+    animation: movingLetters infinite ease-in-out 1s;
+    transform: translateY(-5px);
+    text-transform: capitalize;
+
+}
+
+@keyframes movingLetters{
+
+    50%{transform: translateY(5px);}
+
+}
+
+@-webkit-keyframes movingLetters{
+
+    50%{transform: translateY(5px);}
+
+}
+
+
+#skillsInfo ul:nth-child(2) li a:hover{
+
+    opacity: 50%;
+    transform: scale(1.1);
+}
 
 #mines{
 
     width:100%;
     height:100%;
     display: flex;
+    overflow-x: hidden;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
 
 }
+
+#mines #titleJavas {
+
+    position: absolute;
+    right:0;
+    top:100px;
+    font-size: 200px;
+    text-transform: uppercase;
+    opacity: 10%;
+    color:#b247ea;
+    font-weight: 900;
+    letter-spacing: 10px;
+
+}
+
 
 #mines #weatherApi {
 
@@ -285,7 +365,7 @@ body{
     margin:0 auto;
     position: relative;
     border:1px solid #ccc;
-    background-color: rgba(32, 32, 32, 0.6);
+    background-color: rgba(33, 1, 41, 0.6);
 
 
 }
@@ -299,7 +379,7 @@ body{
    height:30px;
    border-top-left-radius: 10px;
    border-top-right-radius: 10px;
-   background-color: #333;
+   background-color: rgba(225,225,225,0.6);
    display: flex;
    align-items: center;
 }
@@ -417,8 +497,8 @@ body{
     height:40px;
     margin:10px;
     border-radius: 3px;
-    background-color: #333;
-    color:#f4f4f4;
+    background-color: rgba(225,225,225,0.6);
+    color:#fff;
     border:none;
     display: flex;
     align-items: center;
@@ -627,7 +707,23 @@ body{
     width:100%;
     height:100%;
     margin:0 auto;
+    overflow-x: hidden;
 
+}
+
+#sliderWrap #titleSkills{
+
+    position: relative;
+    left:10%;
+    top:300px;
+    z-index:-1;
+    font-size: 150px;
+    white-space: nowrap;
+    text-transform: uppercase;
+    opacity: 7%;
+    color:#b247ea;
+    font-weight: 900;
+    letter-spacing: 10px;
 
 }
 
@@ -648,7 +744,7 @@ body{
     text-align: center;
     font-size: 20px;
     font-weight: 800;
-    letter-spacing: 1px;
+    letter-spacing: -1px;
     color:#fff;
     float:left;
     text-transform: uppercase;
@@ -658,13 +754,13 @@ body{
 #sliderWrap button:hover{
 
     cursor: pointer;
-    color:#b247ea;
+    color:#7600b5;
     
 }
 
 #sliderWrap button.active{
 
-    color:#b247ea;
+    color:#7600b5;
 
 }
 
@@ -731,7 +827,7 @@ body{
     font-size: 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    color:#b247ea;
+    color:#7600b5;
     font-style: normal;
     display: block;
     font-weight: 600;
