@@ -1,17 +1,17 @@
 
-const resizeEvt = () => {
-    
+const resizeEvet = () => {
+
   const window_width = window.innerWidth;
   console.log(window_width);
 
 };
 
-resizeEvt();
+resizeEvet();
 
 window.addEventListener("resize" , function(){
 
-  console.log('resize');
-  resizeEvt();
+  resizeEvet();
+  console.log('resizeEvet');
 
 });
 
@@ -44,13 +44,13 @@ window.addEventListener("load" , function(){
 });
 
 
-
 /* scroll Evet */
 
-const backgroundImg = document.querySelector(".backgroundImg");
+const introduceLetter = document.querySelector(".letters");
 const weatherBack = document.getElementById("weatherApi");
 const titleName = document.querySelector(".titleName");
 const tdweater = document.querySelector(".tdweater");
+
 
 
 window.addEventListener("scroll" , (evt) => {
@@ -59,7 +59,16 @@ window.addEventListener("scroll" , (evt) => {
   console.log(nowScrollY);
   evt.preventDefault;
 
-if(nowScrollY > 800){
+if(nowScrollY > 600){
+
+  introduceLetter.classList.add("active");
+
+}else{
+
+  introduceLetter.classList.remove("active");
+
+}
+if(nowScrollY > 1300){
 
   weatherBack.classList.add("change");
   tdweater.classList.add("change");
@@ -81,6 +90,8 @@ const tdTemp = document.getElementById("tdTemp");
 const tdRain = document.getElementById("tdRain");
 const tdWindy = document.getElementById("tdWindy");
 const tdDays = document.getElementById("tdDays");
+const ootdBox = document.querySelector(".ootdBox");
+
 
 let today = new Date();
 console.log(today);
@@ -202,6 +213,13 @@ async function getWeather() {
   const today_windy = (JSON.stringify(data.response.body.items.item[4].fcstValue)); //정확하게 가져오려는 데이터의 이름을 차례로 기입해야함
   const skyBox = today_sky;
   console.log(typeof(skyBox));
+  console.log(today_temp);
+
+ const changeTemp = today_temp.trim().split("").sort().join("").slice(2,4).split("-");
+ console.log(changeTemp);
+ const resultTemp = Number(changeTemp);
+ console.log(resultTemp);
+
   const rainBox = today_rain;
   console.log(rainBox);
 
@@ -271,6 +289,60 @@ function skyContent(){
   
       rainContent();
 
+//ootd
+
+const Link = {
+
+  aLink : ["https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=padding%20fashion&eq=padding%20fas&etslf=9182",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=coat%20outfit&eq=coat&etslf=6905",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=jacket%20outfit&eq=jaket%20outfit&etslf=5986",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=knit%20outfit&eq=knit%20out&etslf=4285",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=mtm%20outfit&eq=mtm&etslf=4747",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=cardigan%20outfit&eq=cardian&etslf=4495",
+"https://www.pinterest.co.kr/search/pins/?rs=ac&len=2&q=t%20shirt%20outfit&eq=t-shirt&etslf=36008"],
+
+  src : ["./img/paddingVideo.mp4", "./img/coatOutfit.mp4" , "./img/jacketOutfit.mp4" ,"./img/knitOutfit.mp4" ,"./img/mtmOutfit.mp4" , "./img/cardiganOutfit.mp4" , "./img/tshirtOutfit.mp4"],
+  text : ["Padding Outfit" , "Coat Outfit" , "Jacket Outfit" , "Knit Outfit" , "Mtm Outfit" , "Cardigan Outfit" , "T-Shirt Outfit"]
+}
+
+function ootdVideo(){
+
+
+ if(resultTemp < 5 ){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[0]}" target="_blank"><video src="${Link.src[0]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[0]}</span></a>`;
+
+ }else if( resultTemp >= 5 || resultTemp < 9){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[1]}" target="_blank"><video src="${Link.src[1]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[1]}</span></a>`;
+
+ }else if( resultTemp >= 9 || resultTemp < 12){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[2]}" target="_blank"><video src="${Link.src[2]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[2]}</span></a>`;
+ 
+}else if( resultTemp >= 12 || resultTemp < 17){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[3]}" target="_blank"><video src="${Link.src[3]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[3]}</span></a>`;
+ 
+}else if( resultTemp >= 17 || resultTemp < 20){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[4]}" target="_blank"><video src="${Link.src[4]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[4]}</span></a>`;
+ 
+}else if( resultTemp >= 20 || resultTemp < 23){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[5]}" target="_blank"><video src="${Link.src[5]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[5]}</span></a>`;
+ 
+}else if( resultTemp >= 23){
+
+  ootdBox.innerHTML = `<a href="${Link.aLink[6]}" target="_blank"><video src="${Link.src[6]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[6]}</span></a>`;
+ 
+}
+
+
+}
+
+ootdVideo();
+
   tdDays.textContent = `${all_day.Years}년 ${all_day.Months}월 ${all_day.Dates}일 ${Days_array[days]}`;
   tdSky.textContent =  Sky;
   tdTemp.textContent = `${today_temp} °C`;
@@ -284,173 +356,128 @@ function skyContent(){
 getWeather();
 
 
-/* Canvas Drawing */
 
-const canvas = document.getElementById("canvas");
-var ctx = canvas.getContext("2d");
-const rect = canvas.getBoundingClientRect(); 
+/* Slider */
 
-var pos = {
+let sliderContent = document.querySelector(".sliderCont");
+let slideList = document.querySelectorAll(".sliderCont li");
 
-  x : -1,
-  y : -1
+const webBtn = document.getElementById("webBtn");
+const reactBtn = document.getElementById("reactBtn");
+const vueBtn = document.getElementById("vueBtn");
+
+const sliderName = document.querySelector("#titleSkills");
+
+
+const slideWidth = 10;
+const slideMargin = 2;
+const slideLength = slideList.length;
+let slideCurrent = 0;
+webBtn.classList.add("active");
+
+const changeBtnColor = () => {
+
+if( slideCurrent >= 0){
+
+   webBtn.classList.add("active");
+   reactBtn.classList.remove("active");
+   vueBtn.classList.remove("active");
+   sliderName.textContent = "Html5 css javascript";
+
+}if(slideCurrent >= 3){
+
+   reactBtn.classList.add("active");
+   webBtn.classList.remove("active");
+   sliderName.textContent = "React";
+
+
+}if(slideCurrent >= 6){
+
+  vueBtn.classList.add("active");
+  webBtn.classList.remove("active");
+  reactBtn.classList.remove("active");
+  sliderName.textContent = "Vue";
+
+}
+
+ 
+}
+
+
+const movingSlider = () => {
+
+const movingScreen = - slideCurrent * (slideWidth + slideMargin);
+console.log(movingScreen);
+
+sliderContent.style.transform = `translateX(${movingScreen}%)`;
+sliderContent.classList.add("move");
+slideCurrent++;
+console.log(slideCurrent);
+
+  if(slideCurrent == slideLength){
+
+      sliderContent.style.transform = `translateX(0px)`;
+      slideCurrent = 0;
+
+  }
+
+  setTimeout(() => {
+
+      sliderContent.classList.remove("move");
+      console.log('transform삭제');
+
+  },800);
+
+  changeBtnColor();
+
+  
+};
+
+const sliderController = () => {
+
+  sliderContent.onmouseenter  = function(){
+
+  sliderContent.addEventListener("mousedown" , movingSlider);
+
+  };
+
+  sliderContent.onmouseleave  = function(){
+
+      sliderContent.removeEventListener("mousedown" , movingSlider);
+
+  };
 
 };
 
-canvas.addEventListener("mousemove" , function(e){
+sliderController();
 
-  const x = e.offsetX; //offset값으로 지정 -> 마우스 좌표값을 정확히 잡아줌
-  const y = e.offsetY;
-  console.log(x);
-  console.log(y);
+webBtn.addEventListener("click" , function(){
 
-  var $hover = canvas.classList.contains("hover");
-
-  if($hover == true){ 
-
-      ctx.beginPath(pos.x, pos.y); //경로 생성
-      ctx.moveTo(x,y); //선 시작 좌표
-      console.log('if값 도출');
-  }
-  else{
-      ctx.lineTo(x,y); //선 끝 좌표
-      ctx.stroke(); //선 그리기
-
-  }
+  slideCurrent = 0;
+  movingSlider();
+  this.classList.add("active");
+  reactBtn.classList.remove("active");
+  vueBtn.classList.remove("active");
 
 });
 
+reactBtn.addEventListener("click" , function(){
 
-const SaveImg = document.querySelector(".save");
-const ImgLink = document.createElement("a");
-ImgLink.textContent = 'Save';
-SaveImg.appendChild(ImgLink);
-
-ImgLink.addEventListener("click" , function(){
-
-  ImgLink.href = canvas.toDataURL(); //canvas의 toDataURL 값을 이용해 이미지 다운로드값 생성
-  ImgLink.download = "myDrawing.png"; 
+  slideCurrent = 3;
+  movingSlider();
+  this.classList.add("active");
+  webBtn.classList.remove("active");
+  vueBtn.classList.remove("active");
 
 });
 
+vueBtn.addEventListener("click" , function(){
 
-const colorBtn = document.querySelectorAll(".colorBtn li");
-
-let colorName = [
-
-  "#333",
-  "#c70000",
-  "#006ab1",
-  "#6f00ff",
-  "#216400",
-  "#ffee00",
-];
-
-function changeStroke(){
-
-for(var i = 0; i < colorName.length; i++){ 
-  
-  colorBtn[i].setAttribute("class" , `changeColor${i}`);
-
-};};
-
-changeStroke(); 
-
-colorBtn[0].addEventListener("click" ,  function(e){
-
-  const x = e.screenX; //screenX 값으로 변경 -> 현 마우스 위치에서 칼라변경 가능
-  const y = e.screenY;
-
-  if(colorBtn[0].classList.contains(`changeColor${0}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[0];
-
-  };
-});
-
-colorBtn[1].addEventListener("click" ,  function(e){
-  
-  const x = e.screenX;
-  const y = e.screenY;
-
-  if(colorBtn[1].classList.contains(`changeColor${1}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[1];
-
-  };
-});
-
-colorBtn[2].addEventListener("click" ,  function(e){
-  
-  const x = e.screenX;
-  const y = e.screenY;
-
-  if(colorBtn[2].classList.contains(`changeColor${2}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[2];
-
-  };
-});
-
-colorBtn[3].addEventListener("click" ,  function(e){
-  
-  const x = e.screenX;
-  const y = e.screenY;
-
-  if(colorBtn[3].classList.contains(`changeColor${3}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[3];
-
-  };
-});
-
-colorBtn[4].addEventListener("click" ,  function(e){
-  
-  const x = e.screenX;
-  const y = e.screenY;
-
-  if(colorBtn[4].classList.contains(`changeColor${4}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[4];
-
-  };
-});
-
-colorBtn[5].addEventListener("click" ,  function(e){
-  
-  const x = e.screenX;
-  const y = e.screenY;
-
-  if(colorBtn[5].classList.contains(`changeColor${5}`)){
-
-      ctx.beginPath();
-      ctx.moveTo(x, y);
-      ctx.strokeStyle = colorName[5];
-
-  };
-});
-
-
-const reset = document.querySelector(".reset");
-
-reset.addEventListener("click" , function(e){
-
-  const x = e.screenX; //reset 버튼을 눌렀을 때, 현 마우스 위치에서 시작
-  const y = e.screenY;
-  
-  ctx.clearRect(pos.x, pos.y , 640, 300); //canvas의 clearRect로 x, y, width,height 값 지정 뒤 리셋
-  ctx.beginPath();
-  ctx.moveTo(x, y);
+  slideCurrent = 6;
+  movingSlider();
+  this.classList.add("active");
+  webBtn.classList.remove("active");
+  reactBtn.classList.remove("active");
 
 });
 
@@ -462,28 +489,29 @@ gameOverpage.style.display = "none";
 
 let answer = [
 
-  {
-    letter : "adult",
-    info : "만 19세 이상 성인을 일컫는 말",
-  },
-  {
-    letter : "cloth",
-    info : "주변의 위험이나 환경으로부터 몸을 보호하기 위해 걸치는 것",
-  },
-  {
-    letter : "world",
-    info : "지구촌, 모든 나라를 통칭하는 말",
-  },
-  {
-    letter : "music",
-    info : "전자기기 혹은 악기를 통해 듣는 것",
-  },
-  {
-    letter : "plate",
-    info : "음식을 담기 위해 쓰이는 도구",
-  }
+ {
+   letter : "adult",
+   info : "만 19세 이상 성인을 일컫는 말",
+ },
+ {
+   letter : "cloth",
+   info : "주변의 위험이나 환경으로부터 몸을 보호하기 위해 걸치는 것",
+ },
+ {
+   letter : "world",
+   info : "지구촌, 모든 나라를 통칭하는 말",
+ },
+ {
+   letter : "music",
+   info : "전자기기 혹은 악기를 통해 듣는 것",
+ },
+ {
+   letter : "plate",
+   info : "음식을 담기 위해 쓰이는 도구",
+ }
 
 ];
+
 
 const wordleBox = document.querySelectorAll(".pieceBox");
 const wordleStartBtn = document.getElementById("startBtn");
@@ -993,130 +1021,4 @@ valueDefault();
 wordleSubmit.removeEventListener("click" , counting);
 
 });
-
-
-/* Slider */
-
-let sliderContent = document.querySelector(".sliderCont");
-let slideList = document.querySelectorAll(".sliderCont li");
-
-const webBtn = document.getElementById("webBtn");
-const reactBtn = document.getElementById("reactBtn");
-const vueBtn = document.getElementById("vueBtn");
-
-const sliderName = document.querySelector("#titleSkills");
-
-
-const slideWidth = 380;
-const slideMargin = 20;
-const slideLength = slideList.length;
-let slideCurrent = 0;
-webBtn.classList.add("active");
-
-const changeBtnColor = () => {
-
-if( slideCurrent >= 0){
-
-   webBtn.classList.add("active");
-   reactBtn.classList.remove("active");
-   vueBtn.classList.remove("active");
-   sliderName.textContent = "Html css javascript";
-
-}if(slideCurrent >= 3){
-
-   reactBtn.classList.add("active");
-   webBtn.classList.remove("active");
-   sliderName.textContent = "React";
-
-
-}if(slideCurrent >= 6){
-
-  vueBtn.classList.add("active");
-  webBtn.classList.remove("active");
-  reactBtn.classList.remove("active");
-  sliderName.textContent = "Vue";
-
-}
-
- 
-}
-
-
-const movingSlider = () => {
-
-const movingScreen = - slideCurrent * (slideWidth + slideMargin);
-console.log(movingScreen);
-
-sliderContent.style.transform = `translateX(${movingScreen}px)`;
-sliderContent.classList.add("move");
-slideCurrent++;
-console.log(slideCurrent);
-
-  if(slideCurrent == slideLength){
-
-      sliderContent.style.transform = `translateX(0px)`;
-      slideCurrent = 0;
-
-  }
-
-  setTimeout(() => {
-
-      sliderContent.classList.remove("move");
-      console.log('transform삭제');
-
-  },800);
-
-  changeBtnColor();
-
-  
-};
-
-const sliderController = () => {
-
-  sliderContent.onmouseenter  = function(){
-
-  sliderContent.addEventListener("mousedown" , movingSlider);
-
-  };
-
-  sliderContent.onmouseleave  = function(){
-
-      sliderContent.removeEventListener("mousedown" , movingSlider);
-
-  };
-
-};
-
-sliderController();
-
-webBtn.addEventListener("click" , function(){
-
-  slideCurrent = 0;
-  movingSlider();
-  this.classList.add("active");
-  reactBtn.classList.remove("active");
-  vueBtn.classList.remove("active");
-
-});
-
-reactBtn.addEventListener("click" , function(){
-
-  slideCurrent = 3;
-  movingSlider();
-  this.classList.add("active");
-  webBtn.classList.remove("active");
-  vueBtn.classList.remove("active");
-
-});
-
-vueBtn.addEventListener("click" , function(){
-
-  slideCurrent = 6;
-  movingSlider();
-  this.classList.add("active");
-  webBtn.classList.remove("active");
-  reactBtn.classList.remove("active");
-
-});
-
 
