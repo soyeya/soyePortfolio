@@ -505,6 +505,7 @@ body{
      align-items: center;
      justify-content: center;
      opacity: 40%;
+     z-index:1;
      overflow: hidden;
 
 }
