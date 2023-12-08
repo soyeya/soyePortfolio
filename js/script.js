@@ -312,23 +312,23 @@ function ootdVideo(){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[0]}" target="_blank"><video src="${Link.src[0]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[0]}</span></a>`;
 
- }else if( resultTemp >= 5 || resultTemp < 9){
+ }else if( resultTemp == 5 || resultTemp < 9){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[1]}" target="_blank"><video src="${Link.src[1]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[1]}</span></a>`;
 
- }else if( resultTemp >= 9 || resultTemp < 12){
+ }else if( resultTemp == 9 || resultTemp < 12){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[2]}" target="_blank"><video src="${Link.src[2]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[2]}</span></a>`;
  
-}else if( resultTemp >= 12 || resultTemp < 17){
+}else if( resultTemp == 12 || resultTemp < 17){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[3]}" target="_blank"><video src="${Link.src[3]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[3]}</span></a>`;
  
-}else if( resultTemp >= 17 || resultTemp < 20){
+}else if( resultTemp == 17 || resultTemp < 20){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[4]}" target="_blank"><video src="${Link.src[4]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[4]}</span></a>`;
  
-}else if( resultTemp >= 20 || resultTemp < 23){
+}else if( resultTemp == 20 || resultTemp < 23){
 
   ootdBox.innerHTML = `<a href="${Link.aLink[5]}" target="_blank"><video src="${Link.src[5]}" id="ootdVideo" autoplay loop muted></video><span>${Link.text[5]}</span></a>`;
  
