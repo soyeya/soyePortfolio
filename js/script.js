@@ -215,7 +215,7 @@ async function getWeather() {
   console.log(typeof(skyBox));
   console.log(today_temp);
 
- const changeTemp = today_temp.trim().split("").sort().join("").slice(2,4).split("-");
+ const changeTemp = today_temp.trim().split("").sort().join("").slice(2);
  console.log(changeTemp);
  const resultTemp = Number(changeTemp);
  console.log(resultTemp);
