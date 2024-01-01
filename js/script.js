@@ -98,7 +98,7 @@ console.log(today);
 
 let dates = today.getDate();
 const days  = today.getDay();
-const months  = today.getMonth() + 1;
+let months  = today.getMonth() + 1;
 const years  = today.getFullYear();
 const today_watch = [today.getHours() + "00"];
 console.log(today_watch);
@@ -106,10 +106,12 @@ console.log(today_watch);
 const timeContent =  Number(today_watch);
 console.log(timeContent);
 
-if(dates < 10){
+if(dates < 10 && months < 10){
 
  dates = ["0" + today.getDate()];
+ months = ["0" + months];
  console.log(dates);
+ console.log(months);
 
 };
 const Days_array = [ "Sunday",  "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday", "Saturday"];
@@ -201,11 +203,10 @@ let weatherIcon = document.querySelector(".weatherIcon");
 async function getWeather() {
   
 
-  const res = await fetch(API_URL);
-  const data = await res.json();
+  const res = await axios.get(API_URL);
+  console.log(res);
+  const data = await res.data;
   console.log(data);
-  console.log((data.response.body.items));
-  console.log((data.response.body.items.item));
 
   const today_sky = (JSON.stringify(data.response.body.items.item[5].fcstValue));
   const today_temp = (JSON.stringify(data.response.body.items.item[0].fcstValue));
