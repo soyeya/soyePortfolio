@@ -106,17 +106,17 @@ console.log(today_watch);
 const timeContent =  Number(today_watch);
 console.log(timeContent);
 
-if(dates < 10 && months < 10){
+if(dates < 10){
 
  dates = ["0" + today.getDate()];
- months = ["0" + months];
- console.log(dates);
- console.log(months);
-
 };
+
+if(months < 10){
+  months = ["0" + months];
+}
+
 const Days_array = [ "Sunday",  "Monday" , "Tuesday" , "Wednesday" , "Thursday" , "Friday", "Saturday"];
 const Month_array = [ "January" , "February" , "March" , "April" , "May" , "Jun" , "July" , "August" , "September" , "Octobor" , "November" , "December"]
-
 const nowDays = Days_array[days];
 const nowMonths = Month_array[months];
 
