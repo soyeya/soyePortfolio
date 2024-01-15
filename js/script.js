@@ -56,7 +56,6 @@ const tdweater = document.querySelector(".tdweater");
 window.addEventListener("scroll" , (evt) => {
 
   const nowScrollY = window.scrollY;
-  console.log(nowScrollY);
   evt.preventDefault;
 
 if(nowScrollY > 600){
@@ -202,7 +201,6 @@ let weatherIcon = document.querySelector(".weatherIcon");
 
 async function getWeather() {
   
-
   const res = await axios.get(API_URL);
   console.log(res);
   const data = await res.data;
